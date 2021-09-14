@@ -41,9 +41,11 @@ if __name__ == "__main__":
                         output_file=tweets,
                         max_results = 10000)
 
+    # Create the word cloud, with vertical aspect ratio
     print("Creating Word Cloud")
-    create_image_from_file(tweets, mask, output_file, date, max_words=1000)
+    create_image_from_file(tweets, mask, output_file, date, height=15, width=9, max_words=1000)
 
+    # Tweet it out
     print("Creating Tweet")
     text = "I pulled ~10000 tweets that mention #Seattle and created a #wordcloud of what people are saying about the #EmeraldCity!"
     id = tweet(text, image_path=output_file)

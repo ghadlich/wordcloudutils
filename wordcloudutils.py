@@ -68,14 +68,14 @@ def transform_format(val):
     else:
         return val[0]
 
-def create_image_from_file(file_path, img_path, word_cloud_path, date, max_words=300):
+def create_image_from_file(file_path, img_path, word_cloud_path, date, width=15, height=9, max_words=300):
 
     text = get_text_from_tweets(file_path)
 
-    create_image(text, img_path, word_cloud_path, date, max_words=1000)
+    create_image(text, img_path, word_cloud_path, date, width=width, height=height, max_words=1000)
 
 
-def create_image(tweets, img_path, word_cloud_path, date, max_words=1000):
+def create_image(tweets, img_path, word_cloud_path, date, width=15, height=9, max_words=1000):
     mask = np.array(Image.open(img_path))
 
     # Transform mask
@@ -87,7 +87,7 @@ def create_image(tweets, img_path, word_cloud_path, date, max_words=1000):
     stopwords = set(STOPWORDS)
     stopwords.update(["amp", "amps", "m", "city", "u", "will", "s", "one", "lt", "gt", "fuck"])
     wordcloud = WordCloud(width=1125, height=625, max_words=max_words, stopwords=stopwords, normalize_plurals=False, background_color="white", mask=mask, contour_width=1, contour_color='black').generate(tweets)
-    plt.figure(figsize=(15, 8), dpi=400)
+    plt.figure(figsize=(width, height), dpi=400)
     plt.imshow(wordcloud, interpolation='bilinear')
     plt.axis("off")
     #plt.title(f"© Grant Hadlich - {date}", loc='center')
