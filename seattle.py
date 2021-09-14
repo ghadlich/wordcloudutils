@@ -22,8 +22,8 @@
 # THE SOFTWARE. 
 from wordcloudutils import create_image_from_file
 from datetime import datetime
-from twitterutils import recent_search_query
-from twitterutils import tweet
+from twitterutils.twitterutils import recent_search_query
+from twitterutils.twitterutils import tweet
 import json
 import re
 
