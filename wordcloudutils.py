@@ -87,7 +87,7 @@ def create_image(tweets, img_path, word_cloud_path, date, width=15, height=9, ma
     stopwords = set(STOPWORDS)
     stopwords.update(["amp", "amps", "m", "city", "u", "will", "s", "one", "lt", "gt", "fuck"])
     wordcloud = WordCloud(width=1125, height=625, max_words=max_words, stopwords=stopwords, normalize_plurals=False, background_color="white", mask=mask, contour_width=1, contour_color='black').generate(tweets)
-    plt.figure(figsize=(width, height), dpi=400)
+    plt.figure(figsize=(width, height), dpi=200)
     plt.imshow(wordcloud, interpolation='bilinear')
     plt.axis("off")
     #plt.title(f"© Grant Hadlich - {date}", loc='center')
