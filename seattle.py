@@ -35,11 +35,15 @@ if __name__ == "__main__":
     mask = "./seattle/mask.png"
     output_file = "./seattle/raw_tweets/seattle_" + str(date) + ".png"
 
+    # Choose number of tweets
+    number_of_tweets = 20000
+
     # Pull latest 1000 tweets about the entity Seattle	
     print("Pulling Tweets")
     recent_search_query(f"-is:retweet lang:en Seattle", 
                         output_file=tweets,
-                        max_results = 10000)
+                        max_results = number_of_tweets,
+                        max_raw_tweets = number_of_tweets)
 
     # Create the word cloud, with vertical aspect ratio
     print("Creating Word Cloud")
@@ -47,5 +51,5 @@ if __name__ == "__main__":
 
     # Tweet it out
     print("Creating Tweet")
-    text = "I pulled ~10000 tweets that mention #Seattle and created a #wordcloud of what people are saying about the #EmeraldCity!"
+    text = f"I pulled ~{number_of_tweets} tweets that mention #Seattle and created a #wordcloud of what people are saying about the #EmeraldCity!"
     id = tweet(text, image_path=output_file)

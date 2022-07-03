@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
-# Copyright (c) 2021 Grant Hadlich
+# Copyright (c) 2022 Grant Hadlich
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,9 @@ from os import path
 from PIL import Image
 from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
 import matplotlib as mpl
+import datetime
 mpl.use('Agg')
+import datetime
 
 import matplotlib.pyplot as plt
 
@@ -50,8 +52,11 @@ def get_text_from_tweets(filename):
     string = re.sub('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+#]|[!*\(\),]|'\
                     '(?:%[0-9a-fA-F][0-9a-fA-F]))+','', string)
 
+    year = datetime.datetime.today().year
+    copyright = f"Copyright_Grant_Hadlich_{year} the "
+
     for i in range(int(len(data) / 100)):
-        string += "Copyright_Grant_Hadlich_2021 the "
+        string += copyright
 
     string = string.replace("&amp;", "")
 
